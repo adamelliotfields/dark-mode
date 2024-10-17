@@ -1,14 +1,7 @@
 type Theme = 'dark' | 'light' | 'system'
 
 class ThemeController {
-  private static KEY = 'dark'
-  private static DARK = 'dark'
-  private static TRANSITION = '[&_*]:!transition-none'
-  private static THEMES = ['dark', 'light', 'system'] as const
-
-  private el = document.documentElement
-  private storage = window.localStorage
-  private mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  private media = window.matchMedia('(prefers-color-scheme: dark)')
 
   constructor() {
     this.initialize()
@@ -17,29 +10,29 @@ class ThemeController {
   private get theme(): Theme {
     let dark: boolean | null = null
     try {
-      dark = JSON.parse(this.storage.getItem(ThemeController.KEY) || 'null')
+      dark = JSON.parse(window.localStorage.getItem('dark') || 'null')
     } catch {}
     return dark === true ? 'dark' : dark === false ? 'light' : 'system'
   }
 
   private set theme(value: Theme) {
     if (value === 'system') {
-      this.storage.removeItem(ThemeController.KEY)
+      window.localStorage.removeItem('dark')
     } else {
-      this.storage.setItem(ThemeController.KEY, JSON.stringify(value === 'dark'))
+      window.localStorage.setItem('dark', JSON.stringify(value === 'dark'))
     }
   }
 
   private get isDark() {
-    return this.theme === 'dark' || (this.theme === 'system' && this.mediaQuery.matches)
+    return this.theme === 'dark' || (this.theme === 'system' && this.media.matches)
   }
 
   private update(theme: Theme = this.theme) {
-    this.theme = ThemeController.THEMES.includes(theme) ? theme : 'system'
-    this.el.classList.toggle(ThemeController.DARK, this.isDark)
-    this.el.setAttribute('data-theme', this.theme)
-    this.el.classList.add(ThemeController.TRANSITION)
-    setTimeout(() => this.el.classList.remove(ThemeController.TRANSITION), 0)
+    this.theme = ['dark', 'light', 'system'].includes(theme) ? theme : 'system'
+    document.documentElement.classList.toggle('dark', this.isDark)
+    document.documentElement.setAttribute('data-theme', this.theme)
+    document.documentElement.classList.add('[&_*]:!transition-none')
+    setTimeout(() => document.documentElement.classList.remove('[&_*]:!transition-none'), 0)
   }
 
   private initialize() {
@@ -52,12 +45,12 @@ class ThemeController {
       }
     })
 
-    observer.observe(this.el, {
+    observer.observe(document.documentElement, {
       attributeOldValue: true,
       attributeFilter: ['data-theme']
     })
 
-    this.mediaQuery.addEventListener('change', (_) => this.update())
+    this.media.addEventListener('change', (_) => this.update())
   }
 }
 
