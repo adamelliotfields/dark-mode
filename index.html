@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" class="group h-full antialiased [font-synthesis:none] [text-rendering:optimizeLegibility]">
+  <head>
+    <title>%VITE_TITLE%</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="%VITE_DESCRIPTION%" />
+    <meta name="theme-color" content="%VITE_THEME_COLOR%" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="%VITE_HOMEPAGE%" />
+    <!-- open graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%VITE_HOMEPAGE%" />
+    <meta property="og:title" content="%VITE_TITLE%" />
+    <meta property="og:description" content="%VITE_DESCRIPTION%" />
+    <meta property="og:site_name" content="%VITE_TITLE%" />
+    <!-- twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="%VITE_TITLE%" />
+    <meta property="twitter:description" content="%VITE_DESCRIPTION%" />
+    <!-- theme -->
+    <script src="/theme.min.js"></script>
+  <body class="h-full text-neutral-900 bg-neutral-50 dark:text-neutral-100 dark:bg-neutral-950">
+    <div class="h-full flex flex-col" id="root">
+      <!-- header -->
+      <header class="h-16 w-full sticky top-0 flex items-center border-b border-neutral-300 dark:border-neutral-700">
+        <div class="container flex justify-between md:max-w-5xl">
+          <!-- navbar -->
+          <nav class="flex items-center">
+            <a href="/" class="font-medium text-base text-neutral-700 dark:text-neutral-300" aria-current="page">Home</a>
+          </nav>
+          <!-- theme buttons -->
+          <div class="p-1 gap-2 flex justify-center rounded-md bg-neutral-200 dark:bg-neutral-600">
+            <button id="system-btn" class="relative p-1 size-6 rounded-md shadow-md bg-white dark:bg-neutral-600" aria-label="Computer">
+              <i data-lucide="computer" class="absolute top-0 left-0 p-1 [vector-effect:non-scaling-stroke]"></i>
+            </button>
+            <button id="dark-btn" class="relative p-1 size-6 rounded-md shadow-none bg-neutral-200 hover:shadow-sm hover:bg-white/30 dark:bg-neutral-600 dark:hover:bg-black/10" aria-label="Moon">
+              <i data-lucide="moon" class="absolute top-0 left-0 p-1 [vector-effect:non-scaling-stroke]"></i>
+            </button>
+            <button id="light-btn" class="relative p-1 size-6 rounded-md shadow-none bg-neutral-200 hover:shadow-sm hover:bg-white/30 dark:bg-neutral-600 dark:hover:bg-black/10" aria-label="Sun">
+              <i data-lucide="sun" class="absolute top-0 left-0 p-1 [vector-effect:non-scaling-stroke]"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+      <!-- demo -->
+      <main class="w-full flex justify-center mt-8">
+        <div class="p-6 max-w-md rounded-md shadow-md bg-white border border-neutral-100 dark:bg-neutral-800 dark:border-neutral-700">
+          <h2 class="mb-4 font-bold text-2xl text-neutral-800 dark:text-white">Info</h2>
+          <div class="space-y-2">
+            <!-- dark class -->
+            <div class="text-neutral-600 dark:text-neutral-200">
+              <span class="font-semibold"><code>dark</code>&nbsp;class:</span>
+              <div class="inline ml-1 px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-700">
+                <span class="dark:hidden"><code>false</code></span>
+                <span class="hidden dark:inline"><code>true</code></span>
+              </div>
+            </div>
+            <!-- data-theme attribute -->
+            <div class="text-neutral-600 dark:text-neutral-200">
+              <span class="font-semibold"><code>data-theme</code>&nbsp;attribute:</span>
+              <div class="inline ml-1 px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-700">
+                <span class="hidden group-data-[theme=dark]:inline"><code>dark</code></span>
+                <span class="hidden group-data-[theme=light]:inline"><code>light</code></span>
+                <span class="hidden group-data-[theme=system]:inline"><code>system</code></span>
+              </div>
+            </div>
+            <!-- prefers-color-scheme media query -->
+            <div class="text-neutral-600 dark:text-neutral-200">
+              <span class="font-semibold"><code>prefers-color-scheme</code>&nbsp;media query:</span>
+              <div class="inline ml-1 px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-700">
+                <span class="hidden [@media(prefers-color-scheme:_dark)]:inline"><code>dark</code></span>
+                <span class="hidden [@media(prefers-color-scheme:_light)]:inline"><code>light</code></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./src/main.ts" type="module"></script>
+  </body>
+</html>

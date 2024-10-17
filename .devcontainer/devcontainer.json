@@ -1,0 +1,9 @@
+{
+  "build": { "dockerfile": "Dockerfile" },
+  "postCreateCommand": "bun install",
+  "waitFor": "postCreateCommand",
+  "forwardPorts": [4173, 5173],
+  "containerEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
+  }
+}
