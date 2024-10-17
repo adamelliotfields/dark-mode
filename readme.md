@@ -5,4 +5,6 @@
 
 Dark mode implementation with Tailwind and vanilla JS.
 
-See [`theme.ts`](./src/theme.ts) and [`main.ts`](./src/main.ts). Open in [StackBlitz](https://pr.new/adamelliotfields/dark-mode) for the demo.
+Open in [StackBlitz](https://pr.new/adamelliotfields/dark-mode) for the demo (styles can take a minute to load).
+
+See [`theme.ts`](./src/theme.ts) and [`main.ts`](./src/main.ts). Also see [`Theme.tsx`](./src/Theme.tsx) for a React provider and hook.
