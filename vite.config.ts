@@ -1,13 +1,10 @@
 import { resolve } from 'node:path'
 
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 
-export default defineConfig(({ mode }) => {
-  const { VITE_HOMEPAGE } = loadEnv(mode, process.cwd())
-  const base = VITE_HOMEPAGE ? new URL(VITE_HOMEPAGE).pathname : '/'
-
+export default defineConfig(() => {
   return {
-    base: mode === 'production' ? base : '/',
+    base: '/',
     build: { target: 'esnext' },
     resolve: {
       alias: {

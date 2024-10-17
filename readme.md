@@ -5,4 +5,4 @@
 
 Dark mode implementation with Tailwind and vanilla JS.
 
-See [`theme.ts`](./src/theme.ts) and [`main.ts`](./src/main.ts).
+See [`theme.ts`](./src/theme.ts) and [`main.ts`](./src/main.ts). Open in [StackBlitz](https://pr.new/adamelliotfields/dark-mode) for the demo.
